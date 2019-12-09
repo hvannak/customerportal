@@ -145,9 +145,11 @@ class _PaymentState extends State<Payment> {
                                         child: RaisedButton(
                                           padding: EdgeInsets.symmetric(
                                               vertical: 15.0),
+                                          color: Colors.lightBlue,    
                                           shape: new RoundedRectangleBorder(
                                             borderRadius:
                                                 new BorderRadius.circular(8.0),
+                                                
                                           ),
                                           onPressed: () {
                                             if (_formKey.currentState
@@ -161,7 +163,7 @@ class _PaymentState extends State<Payment> {
                                           },
                                           child: Text(
                                             'View',
-                                            style: TextStyle(fontSize: 14.0),
+                                            style: TextStyle(fontSize: 16.0, color: Colors.white),
                                           ),
                                         ),
                                       )
