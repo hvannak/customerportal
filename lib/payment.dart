@@ -160,7 +160,7 @@ class _PaymentState extends State<Payment> {
                                             }
                                           },
                                           child: Text(
-                                            'Save',
+                                            'View',
                                             style: TextStyle(fontSize: 14.0),
                                           ),
                                         ),

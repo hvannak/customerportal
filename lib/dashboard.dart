@@ -52,18 +52,6 @@ class _MyDashboardState extends State<MyDashboard> {
                         ),
                         onTap: () {
                           switch (page) {
-                            case 'visit':
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Routevisiting()));
-                              break;
-                            case 'leave':
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Takeleave()));
-                              break;
                             case 'payment':
                               Navigator.push(
                                   context,
@@ -84,16 +72,9 @@ class _MyDashboardState extends State<MyDashboard> {
                                       builder: (context) => SaleOrder()));
                               break;
                             case 'feedback':
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => Saleorders()));
                               break;
                             default:
                           }
-                          // Navigator.push(
-                          //           context,
-                          //           MaterialPageRoute(builder: (context) => MyHomePage()));
                         },
                       ),
                     ),
@@ -127,11 +108,8 @@ class _MyDashboardState extends State<MyDashboard> {
         mainAxisSpacing: 12.0,
         padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
         children: <Widget>[
-          myItems(Icons.map, "Route Visit", 0xffed622b, context, 'visit'),
           myItems(
               Icons.graphic_eq, "Feedback", 0xffed622b, context, 'feedback'),
-          myItems(
-              Icons.time_to_leave, "Take Leave", 0xffed622b, context, 'leave'),
           myItems(
               Icons.payment, "Payment", 0xffed622b, context, 'payment'),
           myItems(Icons.money_off, "Outstanding", 0xffed622b, context,
@@ -140,8 +118,6 @@ class _MyDashboardState extends State<MyDashboard> {
               'saleorder')
         ],
         staggeredTiles: [
-          StaggeredTile.extent(1, 130.0),
-          StaggeredTile.extent(1, 130.0),
           StaggeredTile.extent(1, 130.0),
           StaggeredTile.extent(1, 130.0),
           StaggeredTile.extent(1, 130.0),
@@ -216,24 +192,6 @@ class _MyDrawerState extends State<MyDrawer> {
           decoration: BoxDecoration(
             color: Colors.blue,
           ),
-        ),
-        ListTile(
-          title: Text('Route Visit'),
-          leading: Icon(Icons.map),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Routevisiting()));
-          },
-        ),
-        ListTile(
-          title: Text('Take Leave'),
-          leading: Icon(Icons.time_to_leave),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Takeleave()));
-          },
         ),
         ListTile(
           title: Text('Payment'),
