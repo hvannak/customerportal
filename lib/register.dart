@@ -263,6 +263,7 @@ class _RegisterState extends State<Register> {
                                         child: RaisedButton(
                                           padding: EdgeInsets.symmetric(
                                               vertical: 15.0),
+                                          color: Colors.lightBlue,
                                           shape: new RoundedRectangleBorder(
                                             borderRadius:
                                                 new BorderRadius.circular(8.0),
@@ -275,7 +276,7 @@ class _RegisterState extends State<Register> {
                                           },
                                           child: Text(
                                             'Register',
-                                            style: TextStyle(fontSize: 14.0),
+                                            style: TextStyle(fontSize: 16.0 , color: Colors.white),
                                           ),
                                         ),
                                       )

@@ -58,29 +58,30 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   fetchPost() async {
-    try{
+    try {
       var body = {'UserName': _username.text, 'Password': _password.text};
-      var respone = await _apiHelper.fetchPost('/api/ApplicationUser/Login', body).timeout(Duration(seconds: 20));
+      var respone = await _apiHelper
+          .fetchPost('/api/ApplicationUser/Login', body)
+          .timeout(Duration(seconds: 20));
       if (respone.statusCode == 200) {
         Map<String, dynamic> tokenget = jsonDecode(respone.body);
-        var response1 = await _apiHelper.fetchData1('/api/UserProfile',tokenget['token']);
+        var response1 =
+            await _apiHelper.fetchData1('/api/UserProfile', tokenget['token']);
         var jsonData = jsonDecode(response1.body);
         Userprofile profile = Userprofile.fromJson(jsonData);
         _setAppSetting(tokenget['token'], profile.fullName,
             profile.linkedCustomerID, profile.iD);
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => MyDashboard()));
-      }
-      else{
+      } else {
         var jsonData = jsonDecode(respone.body)['message'];
         final snackBar = SnackBar(content: Text(jsonData));
         _globalKey.currentState.showSnackBar(snackBar);
       }
-    }
-    catch(e){
+    } catch (e) {
       final snackBar = SnackBar(content: Text('Cannot connect to host'));
       _globalKey.currentState.showSnackBar(snackBar);
-    }   
+    }
   }
 
   @override
@@ -171,8 +172,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
                                       hintText: "Username",
-                                      border: InputBorder.none,
                                       filled: true,
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          borderSide: BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          )),
                                       fillColor: Colors.grey[200],
                                       contentPadding: EdgeInsets.all(15.0),
                                     ),
@@ -187,8 +194,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                 style: TextStyle(fontSize: 14.0),
                                 decoration: InputDecoration(
                                     hintText: "Password",
-                                    border: InputBorder.none,
                                     filled: true,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                        borderSide: BorderSide(
+                                          width: 0,
+                                          style: BorderStyle.none,
+                                        )),
                                     fillColor: Colors.grey[200],
                                     contentPadding: EdgeInsets.all(15.0)),
                               ),
@@ -201,6 +213,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: RaisedButton(
                                           padding: EdgeInsets.symmetric(
                                               vertical: 15.0),
+                                          shape: new RoundedRectangleBorder(
+                                            borderRadius:
+                                                new BorderRadius.circular(8.0),
+                                          ),
+                                          color: Colors.lightBlue,
                                           onPressed: () {
                                             if (_formKey.currentState
                                                 .validate()) {
@@ -209,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           },
                                           child: Text(
                                             'Login',
-                                            style: TextStyle(fontSize: 14.0),
+                                            style: TextStyle(fontSize: 16.0, color: Colors.white),
                                           ),
                                         ),
                                       ),

@@ -172,7 +172,14 @@ class _AddSaleOrderState extends State<AddSaleOrder> {
                               style: TextStyle(fontSize: 14.0),
                               decoration: InputDecoration(
                                 hintText: "OrderNbr",
-                                border: InputBorder.none,
+                                border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          borderSide: BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          )),
+                                
                                 filled: true,
                                 fillColor: Colors.grey[200],
                                 contentPadding: EdgeInsets.all(15.0),
@@ -190,7 +197,13 @@ class _AddSaleOrderState extends State<AddSaleOrder> {
                             style: TextStyle(fontSize: 14.0),
                             decoration: InputDecoration(
                                 hintText: "CustomerID",
-                                border: InputBorder.none,
+                                border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          borderSide: BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          )),
                                 filled: true,
                                 fillColor: Colors.grey[200],
                                 contentPadding: EdgeInsets.all(15.0)),
@@ -205,7 +218,13 @@ class _AddSaleOrderState extends State<AddSaleOrder> {
                             style: TextStyle(fontSize: 14.0),
                             decoration: InputDecoration(
                                 hintText: "Description",
-                                border: InputBorder.none,
+                                border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          borderSide: BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          )),
                                 filled: true,
                                 fillColor: Colors.grey[200],
                                 contentPadding: EdgeInsets.all(15.0)),
@@ -222,7 +241,13 @@ class _AddSaleOrderState extends State<AddSaleOrder> {
                             style: TextStyle(fontSize: 14.0),
                             decoration: InputDecoration(
                                 hintText: "Date",
-                                border: InputBorder.none,
+                                border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          borderSide: BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          )),
                                 filled: true,
                                 fillColor: Colors.grey[200],
                                 contentPadding: EdgeInsets.all(15.0)),
@@ -245,7 +270,13 @@ class _AddSaleOrderState extends State<AddSaleOrder> {
                             style: TextStyle(fontSize: 14.0),
                             decoration: InputDecoration(
                                 hintText: "OrderQty",
-                                border: InputBorder.none,
+                                border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          borderSide: BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          )),
                                 filled: true,
                                 fillColor: Colors.grey[200],
                                 contentPadding: EdgeInsets.all(15.0)),
@@ -263,7 +294,13 @@ class _AddSaleOrderState extends State<AddSaleOrder> {
                             style: TextStyle(fontSize: 14.0),
                             decoration: InputDecoration(
                                 hintText: "OrderTotal",
-                                border: InputBorder.none,
+                                border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          borderSide: BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          )),
                                 filled: true,
                                 fillColor: Colors.grey[200],
                                 contentPadding: EdgeInsets.all(15.0)),
