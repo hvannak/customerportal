@@ -1,5 +1,9 @@
-name: gpstrackingplan
-description: A new Flutter project.
+# name: gpstrackingplan
+# description: A new Flutter project.
+name: customerportal
+description: Medivet customer portal.
+# name: Customerportal
+# description: Medivet Customer Project.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43

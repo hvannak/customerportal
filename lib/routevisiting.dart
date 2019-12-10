@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:gpstrackingplan/cameraphoto.dart';
-import 'package:gpstrackingplan/models/customermodel.dart';
-import 'package:gpstrackingplan/routemapping.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'cameraphoto.dart';
 import 'helpers/apiHelper .dart';
+import 'models/customermodel.dart';
+import 'routemapping.dart';
 
 
 class Routevisiting extends StatelessWidget {

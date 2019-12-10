@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:gpstrackingplan/addsaleorderitem.dart';
-import 'package:gpstrackingplan/models/saleorderitemmodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'addsaleorderitem.dart';
 import 'helpers/apiHelper .dart';
 import 'models/inventorymodel.dart';
+import 'models/saleorderitemmodel.dart';
 
 class DisplaySaleOrderItem extends StatefulWidget {
   final List<SaleOrderItemModel> listSaleItem;

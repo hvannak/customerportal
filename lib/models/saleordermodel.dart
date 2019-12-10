@@ -1,4 +1,5 @@
-import 'package:gpstrackingplan/models/saleorderitemmodel.dart';
+
+import 'saleorderitemmodel.dart';
 
 class SaleOrderModel {
   int saleOrderId;

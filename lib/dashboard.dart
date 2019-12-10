@@ -1,14 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:gpstrackingplan/main.dart';
-import 'package:gpstrackingplan/routevisiting.dart';
-import 'package:gpstrackingplan/saleorder.dart';
-import 'package:gpstrackingplan/takeleave.dart';
-import 'package:gpstrackingplan/payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'customeroutstanding.dart';
+import 'main.dart';
+import 'payment.dart';
+import 'saleorder.dart';
 
 class MyDashboard extends StatefulWidget {
   @override

@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
-import 'package:gpstrackingplan/displaysaleorderitem.dart';
-import 'package:gpstrackingplan/helpers/controlHelper.dart';
-import 'package:gpstrackingplan/models/saleordermodel.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'displaysaleorderitem.dart';
 import 'helpers/apiHelper .dart';
+import 'helpers/controlHelper.dart';
 import 'models/saleorderitemmodel.dart';
+import 'models/saleordermodel.dart';
 
 class AddSaleOrder extends StatefulWidget {
   final SaleOrderModel saleorder;

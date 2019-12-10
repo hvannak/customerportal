@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:gpstrackingplan/appsetting.dart';
-import 'package:gpstrackingplan/helpers/apiHelper%20.dart';
-import 'package:gpstrackingplan/register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'appsetting.dart';
 import 'dashboard.dart';
 
+import 'helpers/apiHelper .dart';
 import 'models/userprofile.dart';
+import 'register.dart';
 
 void main() => runApp(MyApp());
 
