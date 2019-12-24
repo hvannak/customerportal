@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:customerportal/waitingdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'appsetting.dart';
@@ -59,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   fetchPost() async {
     try {
+      WaitingDialogs().showLoadingDialog(context,_globalKey);
       var body = {'UserName': _username.text, 'Password': _password.text};
       var respone = await _apiHelper
           .fetchPost('/api/ApplicationUser/Login', body)
@@ -71,14 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
         Userprofile profile = Userprofile.fromJson(jsonData);
         _setAppSetting(tokenget['token'], profile.fullName,
             profile.linkedCustomerID, profile.iD);
+        Navigator.of(context).pop();
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => MyDashboard()));
       } else {
+        Navigator.of(context).pop();
         var jsonData = jsonDecode(respone.body)['message'];
         final snackBar = SnackBar(content: Text(jsonData));
         _globalKey.currentState.showSnackBar(snackBar);
       }
     } catch (e) {
+      Navigator.of(context).pop();
       final snackBar = SnackBar(content: Text('Cannot connect to host'));
       _globalKey.currentState.showSnackBar(snackBar);
     }

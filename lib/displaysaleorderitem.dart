@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:customerportal/waitingdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'addsaleorderitem.dart';
@@ -145,7 +146,9 @@ class _DisplaySaleOrderItemState extends State<DisplaySaleOrderItem> {
                       ' Total ' +
                       listSaleItem[index].extendedPrice.toString()),
                   onTap: () async {
+                    WaitingDialogs().showLoadingDialog(context,_globalKey);
                     var inventoryList = await fetchInventoryById(listSaleItem[index].inventoryId);
+                    Navigator.of(context).pop();
                     _navigateEditSaleOrderItem(context,listSaleItem[index],inventoryList,index);
                   },
                 ),

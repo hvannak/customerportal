@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:customerportal/waitingdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -86,12 +87,14 @@ class _SaleOrderState extends State<SaleOrder> {
           IconButton(
             icon: Icon(Icons.add_circle),
             onPressed: () async {
+              WaitingDialogs().showLoadingDialog(context,_globalKey);
               var customer =
                   await fetchGetCustomerById(_apiHelper.linkedCustomerID);
               SharedPreferences prefs = await SharedPreferences.getInstance();
               setState(() {
                 prefs.setString('priceclass', customer.priceclass);
               });
+              Navigator.of(context).pop();
               Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -178,6 +181,7 @@ class _SaleOrderState extends State<SaleOrder> {
                               _globalKey.currentState.showSnackBar(snackBar);
                           
                         } else {
+                          WaitingDialogs().showLoadingDialog(context,_globalKey);
                           var customer = await fetchGetCustomerById(
                               _apiHelper.linkedCustomerID);
                           SharedPreferences prefs =
@@ -185,6 +189,7 @@ class _SaleOrderState extends State<SaleOrder> {
                           setState(() {
                             prefs.setString('priceclass', customer.priceclass);
                           });
+                          Navigator.of(context).pop();
                           Navigator.push(
                               context,
                               MaterialPageRoute(

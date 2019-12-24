@@ -1,3 +1,4 @@
+import 'package:customerportal/waitingdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'helpers/apiHelper .dart';
@@ -61,6 +62,17 @@ class _RegisterState extends State<Register> {
         return e.toString();
       }
  
+  }
+
+  Future<void> _handleSubmit(BuildContext context) async {
+    try {
+      WaitingDialogs().showLoadingDialog(context, _globalKey);//invoking register
+      await fetchPost();
+      Navigator.of(_globalKey.currentContext,rootNavigator: true).pop();//close the dialoge
+      Navigator.of(context).pop();
+    } catch (error) {
+      print(error);
+    }
   }
 
   @override
@@ -271,7 +283,8 @@ class _RegisterState extends State<Register> {
                                           onPressed: () {
                                             if (_formKey.currentState
                                                 .validate()) {
-                                                  fetchPost();
+                                                  // fetchPost();
+                                                  _handleSubmit(context);
                                             }
                                           },
                                           child: Text(
