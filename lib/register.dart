@@ -4,6 +4,7 @@ import 'package:customerportal/verifyuserdata.dart';
 import 'package:customerportal/waitingdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'app_localizations.dart';
 import 'helpers/apiHelper .dart';
 
 class Register extends StatefulWidget {
@@ -73,7 +74,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Register')),
+      appBar: AppBar(title: Text(AppLocalizations.of(context).translate('register'))),
       key: _globalKey,
       body: Stack(
           children: <Widget>[
@@ -98,7 +99,7 @@ class _RegisterState extends State<Register> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "Username",
+                                      hintText: AppLocalizations.of(context).translate('username'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -122,7 +123,7 @@ class _RegisterState extends State<Register> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "Full name",
+                                      hintText: AppLocalizations.of(context).translate('fullname'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -143,7 +144,7 @@ class _RegisterState extends State<Register> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "Email",
+                                      hintText: AppLocalizations.of(context).translate('email'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -167,7 +168,7 @@ class _RegisterState extends State<Register> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "CustomerID",
+                                      hintText: AppLocalizations.of(context).translate('customerid'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -192,7 +193,7 @@ class _RegisterState extends State<Register> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "Telephone",
+                                      hintText: AppLocalizations.of(context).translate('phone'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -217,7 +218,7 @@ class _RegisterState extends State<Register> {
                                     obscureText: true,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "Password",
+                                      hintText: AppLocalizations.of(context).translate('password'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -242,7 +243,7 @@ class _RegisterState extends State<Register> {
                                     obscureText: true,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "Confirm Password",
+                                      hintText: AppLocalizations.of(context).translate('confirm_password'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -276,7 +277,7 @@ class _RegisterState extends State<Register> {
                                             }
                                           },
                                           child: Text(
-                                            'Register',
+                                            AppLocalizations.of(context).translate('register'),
                                             style: TextStyle(fontSize: 16.0 , color: Colors.white),
                                           ),
                                         ),

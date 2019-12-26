@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'displaypayment.dart';
+import 'app_localizations.dart';
 
 class Payment extends StatefulWidget {
 
@@ -64,7 +65,7 @@ class _PaymentState extends State<Payment> {
     return Scaffold(
         backgroundColor: Colors.grey[300],
         key: _globalKey,
-        appBar: AppBar(title: Text('Payment')),
+        appBar: AppBar(title: Text(AppLocalizations.of(context).translate('payment'))),
         body: Stack(
           children: <Widget>[
             SingleChildScrollView(
@@ -88,7 +89,7 @@ class _PaymentState extends State<Payment> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "From date",
+                                      hintText: AppLocalizations.of(context).translate('from_date'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -115,7 +116,7 @@ class _PaymentState extends State<Payment> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "To date",
+                                      hintText: AppLocalizations.of(context).translate('to_date'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -157,7 +158,7 @@ class _PaymentState extends State<Payment> {
                                             }
                                           },
                                           child: Text(
-                                            'View',
+                                            AppLocalizations.of(context).translate('view'),
                                             style: TextStyle(fontSize: 16.0, color: Colors.white),
                                           ),
                                         ),

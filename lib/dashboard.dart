@@ -8,6 +8,9 @@ import 'main.dart';
 import 'payment.dart';
 import 'saleorder.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'app_localizations.dart';
+
 class MyDashboard extends StatefulWidget {
   @override
   _MyDashboardState createState() => _MyDashboardState();
@@ -96,7 +99,7 @@ class _MyDashboardState extends State<MyDashboard> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-        'Dashboard',
+        AppLocalizations.of(context).translate('dashboard'),
         style: TextStyle(color: Colors.white),
       )),
       drawer: Drawer(child: MyDrawer()),
@@ -107,12 +110,12 @@ class _MyDashboardState extends State<MyDashboard> {
         padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
         children: <Widget>[
           myItems(
-              Icons.graphic_eq, "Feedback", 0xffed622b, context, 'feedback'),
+              Icons.graphic_eq, AppLocalizations.of(context).translate('feedback'), 0xffed622b, context, 'feedback'),
           myItems(
-              Icons.payment, "Payment", 0xffed622b, context, 'payment'),
-          myItems(Icons.money_off, "Outstanding", 0xffed622b, context,
+              Icons.payment, AppLocalizations.of(context).translate('payment'), 0xffed622b, context, 'payment'),
+          myItems(Icons.money_off, AppLocalizations.of(context).translate('outstanding'), 0xffed622b, context,
               'outstanding'),
-          myItems(Icons.account_box, "Sale Order", 0xffed622b, context,
+          myItems(Icons.account_box, AppLocalizations.of(context).translate('saleorder'), 0xffed622b, context,
               'saleorder')
         ],
         staggeredTiles: [
@@ -192,7 +195,7 @@ class _MyDrawerState extends State<MyDrawer> {
           ),
         ),
         ListTile(
-          title: Text('Payment'),
+          title: Text(AppLocalizations.of(context).translate('payment')),
           leading: Icon(Icons.payment),
           onTap: () {
             Navigator.of(context).pop();
@@ -201,7 +204,7 @@ class _MyDrawerState extends State<MyDrawer> {
           },
         ),
         ListTile(
-          title: Text('Outstanding'),
+          title: Text(AppLocalizations.of(context).translate('outstanding')),
           leading: Icon(Icons.money_off),
           onTap: () {
             Navigator.of(context).pop();
@@ -210,7 +213,7 @@ class _MyDrawerState extends State<MyDrawer> {
           },
         ),
         ListTile(
-          title: Text('Sale Order'),
+          title: Text(AppLocalizations.of(context).translate('saleorder')),
           leading: Icon(Icons.account_box),
           onTap: () {
             Navigator.of(context).pop();
@@ -219,7 +222,7 @@ class _MyDrawerState extends State<MyDrawer> {
           },
         ),
         ListTile(
-          title: Text('Logout'),
+          title: Text(AppLocalizations.of(context).translate('logout')),
           leading: Icon(Icons.backspace),
           onTap: () {
             _removeAppSetting();

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'app_localizations.dart';
 import 'models/payment.dart';
 import 'package:http/http.dart' as http;
 
@@ -86,7 +87,7 @@ class _DisplayPaymentState extends State<DisplayPayment> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List of Payment'),
+        title: Text(AppLocalizations.of(context).translate('list_payment')),
       ),
       body: Container(
           child: FutureBuilder(
@@ -132,7 +133,7 @@ class _DisplayPaymentState extends State<DisplayPayment> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Total: $totalPrice'+ ' USD',
+              Text( AppLocalizations.of(context).translate('total') + ' $totalPrice '+ ' USD',
                   style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,

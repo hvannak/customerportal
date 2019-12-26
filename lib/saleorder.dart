@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'addsaleorder.dart';
+import 'app_localizations.dart';
 import 'helpers/apiHelper .dart';
 import 'models/customermodel.dart';
 import 'models/saleordermodel.dart';
@@ -82,7 +83,7 @@ class _SaleOrderState extends State<SaleOrder> {
     return Scaffold(
       key: _globalKey,
       appBar: AppBar(
-        title: Text('Sale Order'),
+        title: Text( AppLocalizations.of(context).translate('saleorder')),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add_circle),
@@ -100,7 +101,7 @@ class _SaleOrderState extends State<SaleOrder> {
                   MaterialPageRoute(
                       builder: (context) => AddSaleOrder(
                             saleorder: null,
-                            title: "Add Order",
+                            title: AppLocalizations.of(context).translate('saleorder'),
                             customername: customer.customerName,
                           )));
             },
@@ -195,7 +196,7 @@ class _SaleOrderState extends State<SaleOrder> {
                               MaterialPageRoute(
                                   builder: (context) => AddSaleOrder(
                                         saleorder: snapshot.data[index],
-                                        title: "Edit Order",
+                                        title: AppLocalizations.of(context).translate('edit_order'),
                                         customername: customer.customerName,
                                       )));
                         }

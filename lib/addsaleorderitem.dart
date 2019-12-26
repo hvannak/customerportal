@@ -4,6 +4,7 @@ import 'package:customerportal/waitingdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'app_localizations.dart';
 import 'helpers/apiHelper .dart';
 import 'models/inventorymodel.dart';
 import 'models/saleorderitemmodel.dart';
@@ -13,11 +14,12 @@ class AddSaleOrderItem extends StatefulWidget {
   final int saleOrderId;
   final List<InventoryModel> listIn;
   final String title;
-  AddSaleOrderItem({Key key, this.saleorderitem, this.listIn, this.title,this.saleOrderId})
+  AddSaleOrderItem(
+      {Key key, this.saleorderitem, this.listIn, this.title, this.saleOrderId})
       : super(key: key);
   @override
-  _AddSaleOrderItemState createState() =>
-      _AddSaleOrderItemState(this.saleorderitem, this.listIn, this.title,this.saleOrderId);
+  _AddSaleOrderItemState createState() => _AddSaleOrderItemState(
+      this.saleorderitem, this.listIn, this.title, this.saleOrderId);
 }
 
 class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
@@ -25,7 +27,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
   final String title;
   final int saleOrderId;
   List<InventoryModel> _listInventory;
-  _AddSaleOrderItemState(this.saleorderitem, this._listInventory, this.title,this.saleOrderId);
+  _AddSaleOrderItemState(
+      this.saleorderitem, this._listInventory, this.title, this.saleOrderId);
 
   final _formKey = GlobalKey<FormState>();
   final _globalKey = GlobalKey<ScaffoldState>();
@@ -48,7 +51,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
   }
 
   Future<List<InventoryModel>> fetchInventoryData(String name) async {
-    final response = await _apiHelper.fetchData('/api/Inventory/InventoryFeed/' + name);
+    final response =
+        await _apiHelper.fetchData('/api/Inventory/InventoryFeed/' + name);
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       print('test json = $jsonData');
@@ -71,7 +75,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
   }
 
   Future<String> getInventoryPrice(String id, String price) async {
-    final response = await _apiHelper.fetchData('/api/Inventory/InventoryPrice/' + id + '/' + price);
+    final response = await _apiHelper
+        .fetchData('/api/Inventory/InventoryPrice/' + id + '/' + price);
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       if (jsonData['SalesPriceDetails'].toString() != '[]') {
@@ -99,9 +104,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
       _orderQty.text = saleorderitem.orderQty.toString();
       _unitPrice.text = saleorderitem.unitPrice.toString();
       _extendedPrice.text = saleorderitem.extendedPrice.toString();
-    }
-    else{
-      _listInventory =[];
+    } else {
+      _listInventory = [];
     }
   }
 
@@ -125,7 +129,7 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
               Navigator.pop(context, saleorderitem);
             },
           ),
-          title: Text('Add Sale Order Item'),
+          title: Text(AppLocalizations.of(context).translate('add_sale_item')),
         ),
         body: Stack(
           children: <Widget>[
@@ -195,7 +199,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
                                                       _inventorySearch.text);
                                                 },
                                                 child: Text(
-                                                  'Search',
+                                                  AppLocalizations.of(context)
+                                                      .translate('search'),
                                                   style:
                                                       TextStyle(fontSize: 14.0),
                                                 ),
@@ -229,7 +234,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
                                   validator: (val) => val == null
                                       ? "Customer is required"
                                       : null,
-                                  hint: Text('Select Item'),
+                                  hint: Text(AppLocalizations.of(context)
+                                      .translate('select_item')),
                                   value: _inventory,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
@@ -264,7 +270,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
                                   validator: (val) => val == null
                                       ? "Check type is required"
                                       : null,
-                                  hint: Text('Select Item'),
+                                  hint: Text(AppLocalizations.of(context)
+                                      .translate('select_item')),
                                   value: _warehouse,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
@@ -292,7 +299,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "OrderQtyr",
+                                      hintText: AppLocalizations.of(context)
+                                          .translate('orderqty'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -319,7 +327,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "UnitPrice",
+                                      hintText: AppLocalizations.of(context)
+                                          .translate('unit_price'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -344,7 +353,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
                                     enabled: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "ExtendedPrice",
+                                      hintText: AppLocalizations.of(context)
+                                          .translate('extended_price'),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -377,7 +387,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
                                     SaleOrderItemModel itemModel =
                                         SaleOrderItemModel();
                                     itemModel.saleOrderId = saleOrderId;
-                                    itemModel.orderDetailId = _saleOrderDetailId;
+                                    itemModel.orderDetailId =
+                                        _saleOrderDetailId;
                                     itemModel.inventoryId = _inventory;
                                     itemModel.orderQty =
                                         double.parse(_orderQty.text);
@@ -390,7 +401,8 @@ class _AddSaleOrderItemState extends State<AddSaleOrderItem> {
                                   }
                                 },
                                 child: Text(
-                                  'Submit',
+                                  AppLocalizations.of(context)
+                                      .translate('submit'),
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     color: Colors.white,

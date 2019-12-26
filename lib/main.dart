@@ -9,6 +9,9 @@ import 'helpers/apiHelper .dart';
 import 'models/userprofile.dart';
 import 'register.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'app_localizations.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -20,6 +23,25 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('km', 'KH'),
+      ],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode &&
+              supportedLocale.countryCode == locale.countryCode) {
+            return supportedLocale;
+          }
+        }
+        return supportedLocales.first;
+      },
+
       home: MyHomePage(title: 'Main Page'),
     );
   }
@@ -105,7 +127,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Register()));
           },
-          label: Text('Register'),
+          // label: Text('Register'),
+          label:Text(AppLocalizations.of(context).translate('register')),
           icon: Icon(Icons.supervised_user_circle),
           backgroundColor: Colors.pink,
         ),
@@ -176,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "Username",
+                                      hintText: AppLocalizations.of(context).translate('username'),
                                       filled: true,
                                       border: OutlineInputBorder(
                                           borderRadius:
@@ -198,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 obscureText: true,
                                 style: TextStyle(fontSize: 14.0),
                                 decoration: InputDecoration(
-                                    hintText: "Password",
+                                    hintText: AppLocalizations.of(context).translate('password'),
                                     filled: true,
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(8),
@@ -229,8 +252,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                               fetchPost();
                                             }
                                           },
-                                          child: Text(
-                                            'Login',
+                                          child: Text(AppLocalizations.of(context).translate('login'),
                                             style: TextStyle(fontSize: 16.0, color: Colors.white),
                                           ),
                                         ),

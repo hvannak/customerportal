@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'app_localizations.dart';
 import 'models/customeroutstandingmodel.dart';
 
 class CustomerOutstanding extends StatefulWidget {
@@ -118,7 +119,7 @@ class _CustomerOutstandingState extends State<CustomerOutstanding> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Total: $total' + ' USD',
+              Text( AppLocalizations.of(context).translate('total') + ' $total '+ ' USD',
                   style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
