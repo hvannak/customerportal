@@ -35,5 +35,7 @@
     "cancel": "បោះបង់",
     "edit_order": "កែប្រែការបញ្ជាទិញ",
     "add_sale_item": "ការបញ្ជាទិញទំនិញ",
-    "list_sale_order_item": "បញ្ជីការបញ្ជាទិញ"
+    "list_sale_order_item": "បញ្ជីការបញ្ជាទិញ",
+    "username_required": "ទាមទារឈ្មោះអ្នកប្រើ",
+    "password_required": "ទាមទារពាក្យសម្ងាត់"
 }

@@ -35,6 +35,8 @@
     "cancel": "Cancel",
     "edit_order": "Edit Order",
     "add_sale_item": "Add Sale Order Item",
-    "list_sale_order_item": "List Sale OrderItem"
+    "list_sale_order_item": "List Sale OrderItem",
+    "username_required": "Username is required",
+    "password_required": "Password is required"
     
 }

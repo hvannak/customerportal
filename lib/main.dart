@@ -173,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 SingleChildScrollView(
                   child: Container(
-                    height: 300.0,
+                    height: 315.0,
                     width: 450.0,
                     padding:
                         EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
@@ -193,7 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: TextFormField(
                                     controller: _username,
                                     validator: (val) => val.isEmpty
-                                        ? "Username is required"
+                                        ? AppLocalizations.of(context).translate('username_required')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,
@@ -215,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               TextFormField(
                                 controller: _password,
                                 validator: (val) =>
-                                    val.isEmpty ? "Password is required" : null,
+                                    val.isEmpty ? AppLocalizations.of(context).translate('password_required') : null,
                                 autocorrect: false,
                                 autofocus: false,
                                 obscureText: true,
@@ -306,7 +306,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 SingleChildScrollView(
                   child: Container(
-                    height: 300.0,
+                    height: 315.0,
                     width: 450.0,
                     padding:
                         EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
@@ -326,13 +326,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: TextFormField(
                                     controller: _username,
                                     validator: (val) => val.isEmpty
-                                        ? "Username is required"
+                                        ? AppLocalizations.of(context).translate('username')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,
                                     style: TextStyle(fontSize: 14.0),
                                     decoration: InputDecoration(
-                                      hintText: "Username",
+                                      hintText: AppLocalizations.of(context).translate('username'),
                                       border: InputBorder.none,
                                       filled: true,
                                       fillColor: Colors.grey[200],
@@ -342,13 +342,13 @@ class _MyHomePageState extends State<MyHomePage> {
                               TextFormField(
                                 controller: _password,
                                 validator: (val) =>
-                                    val.isEmpty ? "Password is required" : null,
+                                    val.isEmpty ? AppLocalizations.of(context).translate('password_required') : null,
                                 autocorrect: false,
                                 autofocus: false,
                                 obscureText: true,
                                 style: TextStyle(fontSize: 14.0),
                                 decoration: InputDecoration(
-                                    hintText: "Password",
+                                    hintText: AppLocalizations.of(context).translate('password'),
                                     border: InputBorder.none,
                                     filled: true,
                                     fillColor: Colors.grey[200],
@@ -371,7 +371,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             }
                                           },
                                           child: Text(
-                                            'Login',
+                                            AppLocalizations.of(context).translate('login'),
                                             style: TextStyle(fontSize: 14.0),
                                           ),
                                         ),
