@@ -12,40 +12,91 @@ import 'register.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'app_localizations.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Main',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       supportedLocales: [
+//         Locale('en', 'US'),
+//         Locale('km', 'KH'),
+//       ],
+//       localizationsDelegates: [
+//         AppLocalizations.delegate,
+//         GlobalMaterialLocalizations.delegate,
+//         GlobalWidgetsLocalizations.delegate,
+//       ],
+//       localeResolutionCallback: (locale, supportedLocales) {
+//         for (var supportedLocale in supportedLocales) {
+//           if (supportedLocale.languageCode == locale.languageCode &&
+//               supportedLocale.countryCode == locale.countryCode) {
+//             return supportedLocale;
+//           }
+//         }
+//         return supportedLocales.first;
+//       },
+
+//       home: MyHomePage(title: 'Main Page'),
+//     );
+//   }
+// }
+
+
+import 'dart:async';
+import 'app_translations_delegate.dart';
+import 'application.dart';
+
+Future<Null> main() async {
+  runApp(new MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  MyAppState createState() {
+    return new MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
+  AppTranslationsDelegate _newLocaleDelegate;
+
+  @override
+  void initState() {
+    super.initState();
+    _newLocaleDelegate = AppTranslationsDelegate(newLocale: null);
+    application.onLocaleChanged = onLocaleChange;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Main',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      supportedLocales: [
-        Locale('en', 'US'),
-        Locale('km', 'KH'),
-      ],
+      home: MyHomePage(title: 'Main Page'),
       localizationsDelegates: [
-        AppLocalizations.delegate,
+        _newLocaleDelegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode &&
-              supportedLocale.countryCode == locale.countryCode) {
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
-      },
-
-      home: MyHomePage(title: 'Main Page'),
+      supportedLocales: [
+        const Locale('en', 'US'),
+        const Locale('km', 'KH'),
+      ],
     );
   }
+
+  void onLocaleChange(Locale locale) {
+    setState(() {
+      _newLocaleDelegate = AppTranslationsDelegate(newLocale: locale);
+    });
+  }
 }
+
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -61,6 +112,17 @@ class _MyHomePageState extends State<MyHomePage> {
   final _username = TextEditingController();
   final _password = TextEditingController();
   ApiHelper _apiHelper;
+
+  static final List<String> languagesList = application.supportedLanguages;
+  static final List<String> languageCodesList =
+      application.supportedLanguagesCodes;
+
+  final Map<dynamic, dynamic> languagesMap = {
+    languagesList[0]: languageCodesList[0],
+    languagesList[1]: languageCodesList[1],
+  };
+
+  String label = languagesList[0];
 
   _setAppSetting(
       String token, String fullname, String linkedCustomerID, String iD) async {
@@ -115,11 +177,53 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _loadSetting();
+    application.onLocaleChanged = onLocaleChange;
+    onLocaleChange(Locale(languagesMap["Khmer"]));
   }
+
+   void onLocaleChange(Locale locale) async {
+    setState(() {
+      AppLocalizations.load(locale);
+    });
+  } void _select(String language) {
+    print("language== "+language);
+    onLocaleChange(Locale(languagesMap[language]));
+    setState(() {
+      if (language == "Khmer") {
+        label = "Khmer";
+      } else {
+        label = language;
+      }
+    });
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: new AppBar(
+          title: new Text(
+            label,
+            style: new TextStyle(color: Colors.white),
+          ),
+          actions: <Widget>[
+            PopupMenuButton<String>(
+              // overflow menu
+              onSelected: _select,
+              icon: new Icon(Icons.language, color: Colors.white),
+              itemBuilder: (BuildContext context) {
+                return languagesList
+                    .map<PopupMenuItem<String>>((String choice) {
+                  return PopupMenuItem<String>(
+                    value: choice,
+                    child: Text(choice),
+                  );
+                }).toList();
+              },
+            ),
+          ],
+        ),
         resizeToAvoidBottomPadding: false,
         key: _globalKey,
         floatingActionButton: FloatingActionButton.extended(
