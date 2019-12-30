@@ -112,7 +112,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final _username = TextEditingController();
   final _password = TextEditingController();
   ApiHelper _apiHelper;
-  String language = '';
 
   static final List<String> languagesList = application.supportedLanguages;
   static final List<String> languageCodesList =
@@ -144,10 +143,11 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   _loadlanguage() async{
-     SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-       language = (prefs.getString('language') ?? '');
+       label = (prefs.getString('language') ?? '');
     });
+    onLocaleChange(Locale(languagesMap[label]));
   }
 
   fetchPost() async {
@@ -191,7 +191,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void onLocaleChange(Locale locale) async {
-    AppLocalizations.load(locale);
+    var currentLang = await AppLocalizations.load(locale);
+    setState(() {
+      currentLang.currentLanguage;
+    });
   } 
   void _select(String language) async{
     final SharedPreferences prefs = await  SharedPreferences.getInstance();
@@ -199,9 +202,10 @@ class _MyHomePageState extends State<MyHomePage> {
     onLocaleChange(Locale(languagesMap[language]));
     
     setState(() {
+      label = "English";
       prefs.setString('language', language);
-      if (language == "Khmer") {
-        label = "Khmer";
+      if (language == "English") {
+        label = "English";
       } else {
         label = language;
       }

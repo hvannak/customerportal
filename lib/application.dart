@@ -10,7 +10,7 @@ class Application {
 
   final List<String> supportedLanguages = [
     "English",
-    "Khmer"
+    "ភាសាខ្មែរ"
   ];
 
   final List<String> supportedLanguagesCodes = [
