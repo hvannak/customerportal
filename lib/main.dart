@@ -178,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _loadSetting();
     application.onLocaleChanged = onLocaleChange;
-    onLocaleChange(Locale(languagesMap["Khmer"]));
+    onLocaleChange(Locale(languagesMap["English"]));
   }
 
    void onLocaleChange(Locale locale) async {

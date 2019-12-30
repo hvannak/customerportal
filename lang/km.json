@@ -37,5 +37,9 @@
     "add_sale_item": "ការបញ្ជាទិញទំនិញ",
     "list_sale_order_item": "បញ្ជីការបញ្ជាទិញ",
     "username_required": "ទាមទារឈ្មោះអ្នកប្រើ",
-    "password_required": "ទាមទារពាក្យសម្ងាត់"
+    "password_required": "ទាមទារពាក្យសម្ងាត់",
+    "fullname_required": "ទាមទារឈ្មោះ​ពេញ",
+    "customerid_required": "ទាមទារលេខ​សម្គាល់​អតិថិជន",
+    "phone_required": "ទាមទារលេខទូរស័ព្ទ",
+    "confirm_not_match": "បញ្ចាក់ពាក្យសម្ងាត់មិនត្រឹមត្រូវ"
 }

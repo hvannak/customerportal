@@ -93,7 +93,7 @@ class _RegisterState extends State<Register> {
                                   child: TextFormField(
                                     controller: _userName,
                                     validator: (val) => val.isEmpty
-                                        ? "Username is required"
+                                        ? AppLocalizations.of(context).translate('username_required')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,
@@ -117,7 +117,7 @@ class _RegisterState extends State<Register> {
                                   child: TextFormField(
                                     controller: _fullName,
                                     validator: (val) => val.isEmpty
-                                        ? "Full name is required"
+                                        ? AppLocalizations.of(context).translate('fullname_required')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,
@@ -162,7 +162,7 @@ class _RegisterState extends State<Register> {
                                   child: TextFormField(
                                     controller: _linkedCustomerID,
                                     validator: (val) => val.isEmpty
-                                        ? "CustomerID is required"
+                                        ? AppLocalizations.of(context).translate('customerid_required')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,
@@ -187,7 +187,7 @@ class _RegisterState extends State<Register> {
                                     controller: _telephone,
                                     keyboardType: TextInputType.number,
                                     validator: (val) => val.isEmpty
-                                        ? "Telephone is required"
+                                        ? AppLocalizations.of(context).translate('phone_required')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,
@@ -211,7 +211,7 @@ class _RegisterState extends State<Register> {
                                   child: TextFormField(
                                     controller: _password,
                                     validator: (val) => val.isEmpty
-                                        ? "Password is required"
+                                        ? AppLocalizations.of(context).translate('password_required')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,
@@ -236,7 +236,7 @@ class _RegisterState extends State<Register> {
                                   child: TextFormField(
                                     controller: _confirmPassword,
                                     validator: (val) => val != _password.text
-                                        ? "Confirm password is not match"
+                                        ? AppLocalizations.of(context).translate('confirm_not_match')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,

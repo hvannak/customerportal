@@ -37,6 +37,10 @@
     "add_sale_item": "Add Sale Order Item",
     "list_sale_order_item": "List Sale OrderItem",
     "username_required": "Username is required",
-    "password_required": "Password is required"
+    "password_required": "Password is required",
+    "fullname_required": "Fullname is required",
+    "customerid_required": "CustomerID is required",
+    "phone_required": "Telephone is required",
+    "confirm_not_match": "Confirm password is not match"
     
 }
