@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'app_localizations.dart';
+
 class WaitingDialogs {
   final _globalKey = GlobalKey<ScaffoldState>();
   Future<void> showLoadingDialog(
@@ -18,7 +20,7 @@ class WaitingDialogs {
                       child: Column(children: [
                         CircularProgressIndicator(),
                         SizedBox(height: 10,),
-                        Text("Please Wait....",style: TextStyle(color: Colors.blueAccent),)
+                        Text(AppLocalizations.of(context).translate('please_wait'),style: TextStyle(color: Colors.blueAccent),)
                       ]),
                     )
                   ]));

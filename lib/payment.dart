@@ -83,7 +83,7 @@ class _PaymentState extends State<Payment> {
                                   child: TextFormField(
                                     controller: fromdate,
                                     validator: (val) => val.isEmpty
-                                        ? "From date is required"
+                                        ? AppLocalizations.of(context).translate('required_from_date')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,
@@ -110,7 +110,7 @@ class _PaymentState extends State<Payment> {
                                   child: TextFormField(
                                     controller: todate,
                                     validator: (val) => val.isEmpty
-                                        ? "To date is required"
+                                        ? AppLocalizations.of(context).translate('required_to_date')
                                         : null,
                                     autocorrect: false,
                                     autofocus: false,

@@ -130,7 +130,7 @@ class _SaleOrderState extends State<SaleOrder> {
                     if (snapshot.data[index].issync == true) {
                       final snackBar = SnackBar(
                           content: Text(
-                              'Your order have processed. You cannot delete it.'));
+                              AppLocalizations.of(context).translate('can_not_delete')));
                       _globalKey.currentState.showSnackBar(snackBar);
                       return false;
                     } else {
@@ -138,18 +138,18 @@ class _SaleOrderState extends State<SaleOrder> {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: const Text("Confirm"),
-                            content: const Text(
-                                "Are you sure you want to delete this item?"),
+                            title:  Text(AppLocalizations.of(context).translate('confirm')),
+                            content:  Text(
+                                AppLocalizations.of(context).translate('confirm_delete')),
                             actions: <Widget>[
                               FlatButton(
                                   onPressed: () =>
                                       Navigator.of(context).pop(true),
-                                  child: const Text("DELETE")),
+                                  child:  Text(AppLocalizations.of(context).translate('delete'))),
                               FlatButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(false),
-                                child: const Text("CANCEL"),
+                                child:  Text(AppLocalizations.of(context).translate('cancel')),
                               ),
                             ],
                           );
@@ -178,7 +178,7 @@ class _SaleOrderState extends State<SaleOrder> {
                         if (snapshot.data[index].issync == true) {
                           final snackBar = SnackBar(
                           content: Text(
-                              'Your order have processed. You cannot edit it.'));
+                              AppLocalizations.of(context).translate('can_not_edit')));
                               _globalKey.currentState.showSnackBar(snackBar);
                           
                         } else {

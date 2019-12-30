@@ -71,7 +71,7 @@ class _CustomerOutstandingState extends State<CustomerOutstanding> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Customer Outstanding'),
+        title: Text(AppLocalizations.of(context).translate('customer_outstanding')),
       ),
       body: Container(
           child: FutureBuilder(
