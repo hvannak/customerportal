@@ -142,12 +142,20 @@ class _MyHomePageState extends State<MyHomePage> {
       
     });
   }
+
   _loadlanguage() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    String languagecode = (prefs.getString('language') ?? '');
     setState(() {
-       label = (prefs.getString('language') ?? '');
+       if(languagecode == ''){
+         label = 'English';
+         languagecode = 'en';
+       }
+       else{
+         languagecode = (label == 'English' ? 'en' : 'km');
+       }
     });
-    onLocaleChange(Locale(languagesMap[label]));
+    onLocaleChange(Locale(languagesMap[languagecode]));
   }
 
   fetchPost() async {
