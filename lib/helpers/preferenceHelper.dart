@@ -6,12 +6,14 @@ class PreferenceHelper {
   String _fullname = '';
   String _userId = '';
   String _linkedCustomerID;
+  String _language = '';
   PreferenceHelper(SharedPreferences sharedPreferences) {
     _token = (sharedPreferences.getString('token') ?? '');
     _urlSetting = (sharedPreferences.getString('url') ?? '');
     _fullname = (sharedPreferences.getString('fullname') ?? '');
     _userId = (sharedPreferences.getString('Id') ?? '');
     _linkedCustomerID = (sharedPreferences.getString('linkedCustomerID') ?? '');
+    _language = (sharedPreferences).getString('language');
     if (_urlSetting == '') {
       sharedPreferences.setString('url', 'http://192.168.100.140:8184');
       _urlSetting = 'http://192.168.100.140:8184';
@@ -36,5 +38,8 @@ class PreferenceHelper {
 
   String get linkedCustomerID {
     return _linkedCustomerID;
+  }
+   String get language {
+    return _language;
   }
 }

@@ -112,6 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final _username = TextEditingController();
   final _password = TextEditingController();
   ApiHelper _apiHelper;
+  String language = '';
 
   static final List<String> languagesList = application.supportedLanguages;
   static final List<String> languageCodesList =
@@ -139,6 +140,13 @@ class _MyHomePageState extends State<MyHomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _apiHelper = ApiHelper(prefs);
+      
+    });
+  }
+  _loadlanguage() async{
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+       language = (prefs.getString('language') ?? '');
     });
   }
 
@@ -177,18 +185,21 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _loadSetting();
-    application.onLocaleChanged = onLocaleChange;
-    onLocaleChange(Locale(languagesMap["English"]));
+    _loadlanguage();
+    // application.onLocaleChanged = onLocaleChange;
+    
   }
 
-   void onLocaleChange(Locale locale) async {
-    setState(() {
-      AppLocalizations.load(locale);
-    });
-  } void _select(String language) {
+  void onLocaleChange(Locale locale) async {
+    AppLocalizations.load(locale);
+  } 
+  void _select(String language) async{
+    final SharedPreferences prefs = await  SharedPreferences.getInstance();
     print("language== "+language);
     onLocaleChange(Locale(languagesMap[language]));
+    
     setState(() {
+      prefs.setString('language', language);
       if (language == "Khmer") {
         label = "Khmer";
       } else {
@@ -209,7 +220,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           actions: <Widget>[
             PopupMenuButton<String>(
-              // overflow menu
               onSelected: _select,
               icon: new Icon(Icons.language, color: Colors.white),
               itemBuilder: (BuildContext context) {

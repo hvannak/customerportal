@@ -14,7 +14,6 @@ class Application {
   ];
 
   final List<String> supportedLanguagesCodes = [
-    
     "en",
     "km"
   ];
