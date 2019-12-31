@@ -193,7 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _loadSetting();
-    _loadlanguage();
+    // _loadlanguage();
     // application.onLocaleChanged = onLocaleChange;
     
   }
@@ -226,6 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
+          automaticallyImplyLeading:false,
           title: new Text(
             label,
             style: new TextStyle(color: Colors.white),
