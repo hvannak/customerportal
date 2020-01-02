@@ -48,6 +48,7 @@
     "please_wait": "Please Wait....",
     "can_not_delete": "Your order have processed. You cannot delete it.",
     "confirm_delete": "Are you sure you want to delete this item?",
-    "can_not_edit": "Your order have processed. You cannot edit it."
-    
+    "can_not_edit": "Your order have processed. You cannot edit it.",
+    "appsetting": "App Setting",
+    "save_message": "Data Saved"
 }

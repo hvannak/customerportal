@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'app_localizations.dart';
+
 class Appsetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('App Setting')
+        title: Text(AppLocalizations.of(context).translate('appsetting')),
       ),
       body: MySetting(title: 'App Setting')
     );
@@ -29,7 +31,7 @@ class _MySettingState extends State<MySetting> {
 
   void showSnackbar(BuildContext context) async {
     _setAppSetting();
-    final snackBar = SnackBar(content: Text('Data saved'));
+    final snackBar = SnackBar(content: Text(AppLocalizations.of(context).translate('save_message')));
     _globalKey.currentState.showSnackBar(snackBar);
   }
 
@@ -96,8 +98,7 @@ class _MySettingState extends State<MySetting> {
                                     showSnackbar(context);
                                   }
                                 },
-                                child: Text(
-                                  'Save',
+                                child: Text(AppLocalizations.of(context).translate('submit'),
                                   style: TextStyle(fontSize: 14.0),
                                 ),
                               ),

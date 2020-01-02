@@ -4,50 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'appsetting.dart';
 import 'dashboard.dart';
-
 import 'helpers/apiHelper .dart';
 import 'models/userprofile.dart';
 import 'register.dart';
-
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'app_localizations.dart';
-
-// void main() => runApp(MyApp());
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Main',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       supportedLocales: [
-//         Locale('en', 'US'),
-//         Locale('km', 'KH'),
-//       ],
-//       localizationsDelegates: [
-//         AppLocalizations.delegate,
-//         GlobalMaterialLocalizations.delegate,
-//         GlobalWidgetsLocalizations.delegate,
-//       ],
-//       localeResolutionCallback: (locale, supportedLocales) {
-//         for (var supportedLocale in supportedLocales) {
-//           if (supportedLocale.languageCode == locale.languageCode &&
-//               supportedLocale.countryCode == locale.countryCode) {
-//             return supportedLocale;
-//           }
-//         }
-//         return supportedLocales.first;
-//       },
-
-//       home: MyHomePage(title: 'Main Page'),
-//     );
-//   }
-// }
-
-
 import 'dart:async';
 import 'app_translations_delegate.dart';
 import 'application.dart';
@@ -138,8 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _loadSetting() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _apiHelper = ApiHelper(prefs);
-      
+      _apiHelper = ApiHelper(prefs);    
     });
   }
 
@@ -152,10 +112,11 @@ class _MyHomePageState extends State<MyHomePage> {
          languagecode = 'en';
        }
        else{
-         languagecode = (label == 'English' ? 'en' : 'km');
+         label = languagecode;
+         languagecode = (languagecode == 'English' ? 'en' : 'km');
        }
     });
-    onLocaleChange(Locale(languagesMap[languagecode]));
+   await onLocaleChange(Locale(languagecode));
   }
 
   fetchPost() async {
@@ -193,12 +154,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _loadSetting();
-    // _loadlanguage();
+    _loadlanguage();
     // application.onLocaleChanged = onLocaleChange;
     
   }
 
-  void onLocaleChange(Locale locale) async {
+  Future<void> onLocaleChange(Locale locale) async {
     var currentLang = await AppLocalizations.load(locale);
     setState(() {
       currentLang.currentLanguage;
