@@ -185,7 +185,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () => Future.value(false),
+      child: Scaffold(
       appBar: new AppBar(
           automaticallyImplyLeading:false,
           title: new Text(
@@ -226,7 +228,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: orientation == Orientation.portrait
                   ? _veticalLayout()
                   : _horizontalLayout());
-        }));
+        }))
+    );
   }
 
   _veticalLayout() {
