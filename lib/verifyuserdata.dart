@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:customerportal/waitingdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -33,9 +35,19 @@ class _VerifyUserDataState extends State<VerifyUserData> {
       try{
         WaitingDialogs().showLoadingDialog(context, _globalKey);
         final response = await _apiHelper.fetchPost1('/api/ApplicationUser/Register', body);
+        print('verify');
+        print(response.body);
         if (response.statusCode == 200) {
-          Navigator.of(_globalKey.currentContext,rootNavigator: true).pop();
-          Navigator.of(context).pop();
+          var messagerespone = jsonDecode(response.body);
+          if(messagerespone["Succeeded"] == true){
+            Navigator.of(_globalKey.currentContext,rootNavigator: true).pop();
+            Navigator.of(context).pop();
+          }
+          else{
+            Navigator.of(context).pop();
+            final snackBar = SnackBar(content: Text(messagerespone["Errors"][0]["Description"]));
+            _globalKey.currentState.showSnackBar(snackBar);
+          }
         } else {
           Navigator.of(context).pop();
           final snackBar = SnackBar(content: Text('Failed to register'));
