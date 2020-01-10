@@ -147,7 +147,7 @@ class _DisplaySaleOrderItemState extends State<DisplaySaleOrderItem> {
                       ' Total ' +
                       listSaleItem[index].extendedPrice.toString()),
                   onTap: () async {
-                    WaitingDialogs().showLoadingDialog(context,_globalKey);
+                     WaitingDialogs().showLoadingDialog(context,_globalKey);
                     var inventoryList = await fetchInventoryById(listSaleItem[index].inventoryId);
                     Navigator.of(context).pop();
                     _navigateEditSaleOrderItem(context,listSaleItem[index],inventoryList,index);

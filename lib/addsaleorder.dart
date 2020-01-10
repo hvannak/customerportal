@@ -59,7 +59,7 @@ class _AddSaleOrderState extends State<AddSaleOrder> {
       });
     } else {
       List<SaleOrderItemModel> result = await Navigator.push(context,
-          MaterialPageRoute(builder: (context) => DisplaySaleOrderItem(listSaleItem: null,title: AppLocalizations.of(context).translate('list_sale_order_item'),saleOrderId: 0,)));
+          MaterialPageRoute(builder: (context) => DisplaySaleOrderItem(listSaleItem: _listSaleItem,title: AppLocalizations.of(context).translate('list_sale_order_item'),saleOrderId: 0,)));
       setState(() {
         _listSaleItem = result;
         _oderQty.text = getSumQty();
